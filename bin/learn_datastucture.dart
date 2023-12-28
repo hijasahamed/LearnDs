@@ -29,37 +29,23 @@ display(){
   }
 }
 
-// removedupli(){
-//   Node? current =head;
-//   while(current!=null){
-//     Node? nxt=current.next;
-//     while(nxt!=null && nxt.data==current.data){
-//       nxt=nxt.next;
-//     }
-//     current.next=nxt;
-//     if(nxt==tail&&current.data==nxt!.data){
-//       tail=current;
-//       tail!.next=null;
-//     }
-//     current=nxt;
-//   }
-// }
-
-removeduplicate(){
-  Node? current=head;
+removedupli(){
+  Node? current =head;
   while(current!=null){
-    Node? nxtval=current.next;
-    while(nxtval!=null&&nxtval.data==current.data){
-      nxtval=nxtval.next;
+    Node? nxt=current.next;
+    while(nxt!=null && nxt.data==current.data){
+      nxt=nxt.next;
     }
-    current.next=nxtval;
-    if(nxtval==tail && current.data==nxtval!.data){
+    current.next=nxt;
+    if(nxt==tail&&current.data==nxt!.data){
       tail=current;
       tail!.next=null;
     }
-    current=nxtval;
+    current=nxt;
   }
 }
+
+
 
 void main(){
   addData(1);
@@ -71,5 +57,6 @@ void main(){
   addData(3); 
   display();
   print('After deleting duplicate');
+  removedupli();
   display();
 }
