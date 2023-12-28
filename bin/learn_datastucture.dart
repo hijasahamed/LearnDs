@@ -48,13 +48,13 @@ removedupli(){
 
 
 void main(){
-  addData(1);
-  addData(2);
-  addData(3);
-  addData(2);
-  addData(3);
-  addData(2);
-  addData(3); 
+  addData(6);
+  addData(10);
+  addData(5);
+  addData(5);
+  addData(5);
+  addData(8);
+  addData(8); 
   display();
   print('After deleting duplicate');
   removedupli();
