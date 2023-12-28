@@ -54,7 +54,7 @@ void main(){
   addData(5);
   addData(5);
   addData(8);
-  addData(8); 
+  addData(2); 
   display();
   print('After deleting duplicate');
   removedupli();
