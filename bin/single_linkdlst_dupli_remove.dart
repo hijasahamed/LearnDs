@@ -7,10 +7,10 @@ class Node{
 Node? head;
 Node? tail;
 
-addNodeData(int data){
+addData(int data){
   Node newnode=Node(data);
   if(head==null){
-    head=newnode;
+    head = newnode;
   }
   else{
     tail!.next=newnode;
@@ -21,7 +21,7 @@ addNodeData(int data){
 display(){
   Node? temp=head;
   if(temp==null){
-    print('No values in the List');
+    print('No values in the Lists');
   }
   while(temp !=null){
     print(temp.data);
@@ -29,18 +29,34 @@ display(){
   }
 }
 
-removeduplicates(){
-  Node? current=head;
+removedupli(){
+  Node? current =head;
   while(current!=null){
     Node? nxt=current.next;
-    while(nxt!=null&&nxt.data==current.data){
+    while(nxt!=null && nxt.data==current.data){
       nxt=nxt.next;
     }
     current.next=nxt;
+    if(nxt==tail&&current.data==nxt!.data){
+      tail=current;
+      tail!.next=null;
+    }
+    current=nxt;
   }
 }
 
+
+
 void main(){
-  addNodeData(1000);
+  addData(6);
+  addData(10);
+  addData(5);
+  addData(5);
+  addData(5);
+  addData(8);
+  addData(2); 
+  display();
+  print('After deleting duplicate');
+  removedupli();
   display();
 }
