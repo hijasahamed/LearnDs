@@ -90,6 +90,22 @@ insertbehind(int behindTo,data){
   prev!.next=newnode;
 }
 
+removedupli(){
+  Node? current =head;
+  while(current!=null){
+    Node? nxt=current.next;
+    while(nxt!=null && nxt.data==current.data){
+      nxt=nxt.next;
+    }
+    current.next=nxt;
+    if(nxt==tail&&current.data==nxt!.data){
+      tail=current;
+      tail!.next=null;
+    }
+    current=nxt;
+  }
+}
+
 void main(){
   addNode(100);
   addNode(200);
