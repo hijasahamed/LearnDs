@@ -1,29 +1,20 @@
-class Node{
-  String? data;
-  Node? next;
-  Node? prev;
-  Node(this.data);
-}
-
-Node? head;
-Node? tail;
-
-addNodeData(String data){
- Node newnode=Node(data);
- if(head==null){
-  head=newnode;
- }
- else{
-  tail!.next=newnode;
-  newnode.prev=tail;
- }
- tail=newnode;
-}
-
-display(){
-  Node? temp=head;
-  while(temp!=null){
-    print(temp.data);
-    temp=temp.next;
-  }
+void main(){
+  var res;
+  String s='abcd';
+  String t='abcde';
+  // List a=s.split('').toList();
+  List b=t.split('').toList();
+  print(b.last);
+  // for(int i=0;i<b.length;i++){
+  //   int c=0;
+  //     for(int j=0;j<a.length;j++){
+  //         if(a[i]==b[i]){
+  //            c++;
+  //         }
+  //     }
+  //     if(c==0){
+  //       res=b[i];
+  //     }
+  // }
+  // print(res);
 }
