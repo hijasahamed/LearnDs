@@ -1,4 +1,4 @@
-
+// circular linked list 
 class Node{
   int? data;
   Node? next;
@@ -15,7 +15,8 @@ addNodeValue(int data){
  }
  else{
   tail!.next=newnode;
-  
+  newnode.next=head;
+
  }
  tail=newnode; 
 }
@@ -34,4 +35,5 @@ main(){
   addNodeValue(10);
   addNodeValue(20);
   addNodeValue(30);
+  display();
 }
