@@ -66,6 +66,19 @@ insert(int nextTo,data){
   temp.next=newnode;
 }
 
+rev(){
+  Node? prev=null;
+  Node? curr=head;
+  while(curr !=null){
+    Node? nxt=curr.next; 
+    curr.next=prev;
+    prev=curr;
+    curr=nxt;
+  }
+  head=prev; 
+  display();
+}
+
 void main(){
   print('values in the list');
   addData(50);
