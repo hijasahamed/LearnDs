@@ -1,39 +1,10 @@
-// circular linked list 
-class Node{
-  int? data;
-  Node? next;
-  Node(this.data);
-}
-
-Node? head;
-Node? tail;
-
-addNodeValue(int data){
- Node newnode=Node(data);
- if(head==null){
-  head=newnode;
- }
- else{
-  tail!.next=newnode;
-  newnode.next=head;
-
- }
- tail=newnode; 
-}
-
-display(){
-  Node? temp=head;
-  while(temp!=null){
-    print(temp.data);
-    temp=temp.next;
-  }
-}
-
-
-
 main(){
-  addNodeValue(10);
-  addNodeValue(20);
-  addNodeValue(30);
-  display();
+  List arr=[1,2,3,4,5,6,7,8,9];
+  int t=6;
+  for(int i=0;i<arr.length;i++){
+    if(arr[i]==t){
+      print('target found in position $i');
+      break;
+    }
+  }
 }
