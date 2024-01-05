@@ -1,24 +1,92 @@
-main(){
-  List arr=[10,20,30,40,50,60,70];
-  binarysearch(arr, 10);
+class Node{
+  int? data;
+  Node? next;
+  Node(this.data);
 }
 
-binarysearch(List arr,int target){
-  int l=0;
-  int r=arr.length-1; 
-  while(l<r){
-    int min=(l+r)~/2;
-    if(target==arr[min]){
-      print('Target found at index $min');
-      return;
-    }
-    else if(target < arr[min]){
-      r=min-1;
-    }
-    else{
-      l=min+1;
-    }
+Node? head;
+Node? tail;
+
+addNode(int data){
+  Node newnode=Node(data);
+  if(head==null){
+    head=newnode;
   }
-  // print('No target found in the list');
+  else{
+    tail!.next=newnode;
+  }
+  tail=newnode;
 }
 
+display(){
+  Node? temp=head;
+  while(temp!=null){
+    print(temp.data);
+    temp=temp.next;
+  }
+}
+
+reverse(){
+  Node? prev;
+  Node?current=head;
+  while(current != null){
+    Node? nxt=current.next;
+    current.next=prev;
+    prev=current;
+    current=nxt;
+  }
+  head=prev;
+  display();
+}
+
+delete(int data){
+  Node? temp=head;
+  Node? prev;
+  if(temp != null && temp.data==data){
+    head=temp.next;
+    return;
+  }
+  while(temp!=null && temp.data!=data){
+    prev=temp;
+    temp=temp.next;
+  }
+  if(temp==null){
+    return;
+  }
+  if(temp==tail){
+    tail=prev;
+    tail!.next=null;
+    return;
+  }
+  prev!.next=temp.next;
+  display();
+}
+
+insert(nextto,data){
+  Node? newnode=Node(data);
+  Node? temp=head;
+  while(temp!=null && temp.data!=nextto){
+    temp=temp.next;
+  }
+  if(temp==null){
+    return;
+  }
+  if(temp==tail){
+    tail!.next=newnode;
+    tail=newnode;
+    return;
+  }
+  newnode.next=temp.next;
+  temp.next=newnode;
+  display();
+}
+
+main(){
+  addNode(10);
+  addNode(20);
+  addNode(30);
+  display();
+  print('After 25');
+  insert(20, 25);
+  
+}
