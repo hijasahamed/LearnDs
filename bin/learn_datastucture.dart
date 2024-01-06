@@ -1,6 +1,11 @@
-main() {
-  String str='hello hijaskp';
-  var res=str.trim();
-  var a= res.split(' ').first.length;
-  print(a);
+main(){
+  String str='good morning';
+  int index=str.indexOf('g');
+  adding(str, index);
 }
+
+adding(str,index){
+  var data=str.substring(0,str.length)+' guys';
+  print(data);
+}
+
