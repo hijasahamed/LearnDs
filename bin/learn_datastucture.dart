@@ -1,11 +1,14 @@
+
+f(int n){
+  if(n<=1){
+    return 1;
+  }
+  else{
+    return n*f(n-1);
+  }
+}
+
 main(){
-  String str='good morning';
-  int index=str.indexOf('g');
-  adding(str, index);
+  int a=f(5);
+  print(a);
 }
-
-adding(str,index){
-  var data=str.substring(0,str.length)+' guys';
-  print(data);
-}
-
