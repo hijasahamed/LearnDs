@@ -9,3 +9,11 @@ main(){
     print('no');
   }
 }
+
+
+// print the length of the last word in the string
+void maiin(){
+  String str='   Hijas Ahamed  ';
+  var res=str.trim().split(' ').last.length;
+  print(res);
+}

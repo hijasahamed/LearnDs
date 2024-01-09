@@ -1,3 +1,4 @@
+// find sum of the array elements using recursion 
 sum(List arr,int i){
   if(i==arr.length){
     return 0;
