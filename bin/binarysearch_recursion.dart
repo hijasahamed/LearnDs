@@ -18,5 +18,3 @@ main(){
   var a=binaryfunction(arr, 3, 0, arr.length-1);
   print(a);
 }
-
-
