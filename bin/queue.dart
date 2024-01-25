@@ -28,6 +28,32 @@ dequeue(){
   display();
 }
 
+findMiddle() {
+  if (front == null) {
+    print('The queue is empty');
+    return;
+  }
+
+  Node? slowPointer = front;
+  Node? fastPointer = front;
+
+  while (fastPointer != null && fastPointer.next != null) {
+    slowPointer = slowPointer!.next;
+    fastPointer = fastPointer.next!.next;
+  }
+
+  print('Middle element: ${slowPointer!.data}');
+}
+
+peek(){
+  Node? res=front;
+  if(res!=null){
+    print('front element is ${res.data}');
+  }
+}
+
+
+
 display(){
   Node? current = front;
   if(current==null){
@@ -45,6 +71,4 @@ void main(){
   enqueue(30);
   enqueue(40);
   display();
-  print('after dq');
-  dequeue();
 }

@@ -27,6 +27,20 @@ pop(){
   display();
 }
 
+middle(){
+  if(top==null){
+    return;
+  }
+  Node? slow=top;
+  Node? fast=top;
+
+  while(fast!=null && fast.next!=null){
+    slow=slow!.next;
+    fast=fast.next!.next;
+  }
+  print(slow!.data);
+}
+
 display(){
   Node? current=top;
   while(current!=null){
