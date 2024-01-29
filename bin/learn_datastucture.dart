@@ -1,28 +1,47 @@
-mergesort(List arr){
-  if(arr.length <=1){
-    return arr;
-  }
-  int mid=(arr.length/2).floor();
-  List firsthalf = arr.sublist(0,mid);
-  List secondhalf = arr.sublist(mid,arr.length);
-  return join(mergesort(firsthalf), mergesort(secondhalf));
+class Node{
+  int? data;
+  Node? next;
+  Node(this.data);
 }
 
-join(List firsthalf,List secondhalf){
-  List newlist=[];
-  while(firsthalf.isNotEmpty && secondhalf.isNotEmpty){
-    if(firsthalf[0] <= secondhalf[0]){
-      newlist.add(firsthalf.removeAt(0));
-    }
-    else{
-      newlist.add(secondhalf.removeAt(0));
-    }
+Node? top;
+
+push(int data){
+  Node newnode=Node(data);
+  if(top==null){
+    top=newnode;
   }
-  List a=[...newlist,...firsthalf,...secondhalf];
-  return a;
+  else{
+    newnode.next=top;
+    top=newnode;
+  }
 }
+
+display(){
+  Node? current=top;
+  while(current!=null){
+    print(current.data);
+    current=current.next;
+  }
+}
+
+displayreverse(Node? curr){
+  if(curr==null){
+    return;
+  }
+  displayreverse(curr.next);
+  print(curr.data);
+}
+
 
 main(){
-  List arr=[5,1,2,4,3];
-  print(mergesort(arr));
+  push(10);
+  push(20);
+  push(30);
+  push(40);
+  push(50);
+  push(60);
+  display();
+  print("Stack in reverse order:");
+  displayreverse(top);
 }

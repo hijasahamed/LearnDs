@@ -49,6 +49,15 @@ display(){
   } 
 }
 
+displayreverse(Node? curr){
+  if(curr==null){
+    return;
+  }
+  displayreverse(curr.next);
+  print(curr.data);
+}
+
+
 
 void main(){
   push(10);
