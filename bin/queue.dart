@@ -1,5 +1,5 @@
 class Node{
-  int ? data;
+  int? data;
   Node? next;
   Node(this.data);
 }
