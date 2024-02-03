@@ -1,44 +1,26 @@
 
-quicksort(List arr) {
-  ///   0(nlogn)TS
-  sort(arr, 0, arr.length - 1);
-  return arr;
-}
-
-sort(List arr, int firstidx, int lastidx) {
-  if (firstidx >= lastidx) {
-    return;
+List quicksort(List arr) {
+  if (arr.length <= 1) {
+    return arr;
   }
-  int pivot = firstidx;
-  int first = firstidx + 1;
-  int last = lastidx;
-  while (first <= last) {
-    if (arr[last] < arr[pivot] && arr[first] > arr[pivot]) {
-      swap(arr, first, last);
-      first++;
-      last--;
-    }
-    if (arr[first] <= arr[pivot]) {
-      first++;
-    }
-    if (arr[last] >= arr[pivot]) {
-      last--;
-    }
-    swap(arr, last, pivot);
-    sort(arr, firstidx, lastidx - 1);
-    sort(arr, firstidx + 1, lastidx);
-  }
-}
+  int pivotIndex = (arr.length / 2).floor();
+  int pivot = arr[pivotIndex];
 
-swap(List arr, int i, int j) {
-  int temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
+  List left = [];
+  List right = [];
+
+  for (int i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.add(arr[i]);
+    } else {
+      right.add(arr[i]);
+    }
+  }
+
+  return [...quicksort(left), pivot, ...quicksort(right)];
 }
 
 void main() {
-  List arr=[2,5,4,3,1];
-  quicksort(arr);
-  print(arr);
-
+  List arr = [4, 1, 3, 2, 5];
+  print(quicksort(arr)); 
 }
