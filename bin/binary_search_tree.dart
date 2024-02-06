@@ -52,9 +52,39 @@ contains(data){
   return false;
 }
 
+
+inOrder(Node? node){
+  if(node != null){
+    inOrder(node.left);
+    print(node.data);
+    inOrder(node.right);
+  }
+}
+
+preOrder(Node? node){
+  if(node != null){
+    print(node.data);
+    preOrder(node.left);
+    preOrder(node.right);
+  }
+}
+
+postOrder(Node? node){
+  if(node != null){
+    postOrder(node.left);
+    postOrder(node.right);
+    print(node.data);
+  }
+}
+
+
+
+
+
 main(){
   insert(10);
   insert(8);
   insert(11);
-  print(contains(10));
+  insert(4);
+  insert(9);
 }
