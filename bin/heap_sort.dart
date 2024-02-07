@@ -1,4 +1,4 @@
-heapSort(List<int> arr) {
+void heapSort(List<int> arr) {
   int n = arr.length;
 
   for (int i = (n ~/ 2) - 1; i >= 0; i--) {
@@ -14,7 +14,7 @@ heapSort(List<int> arr) {
   }
 }
 
- heapify(List<int> arr, int n, int i) {
+void heapify(List<int> arr, int n, int i) {
   int largest = i;
   int left = 2 * i + 1;
   int right = 2 * i + 2;
@@ -34,9 +34,4 @@ heapSort(List<int> arr) {
 
     heapify(arr, n, largest);
   }
-}
-
-main(){
-  List<int> arr=[3,1,5,4,2];
-  print(heapSort(arr));
 }
