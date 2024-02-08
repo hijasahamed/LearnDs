@@ -1,42 +1,77 @@
-heapSort(List<int> arr) {
-  int n = arr.length;
+class Node{
+  int? data;
+  Node? left;
+  Node? right;
+  Node(this.data);
+}
 
-  for (int i = (n ~/ 2) - 1; i >= 0; i--) {
-    heapify(arr, n, i); //first heap array will convert to max heap
+Node? root;
+
+insert(data){
+  Node newnode=Node(data);
+  Node? currentroot=root;
+  if(root==null){
+    root=newnode;
+    return;
   }
-
-  for (int i = n - 1; i >= 0; i--) {
-    int temp = arr[0];
-    arr[0] = arr[i];
-    arr[i] = temp;
-
-    heapify(arr, i, 0);
+  while(true){
+    if(data<currentroot?.data){
+     if(currentroot?.left==null){
+      currentroot?.left=newnode;
+      return;
+     }
+     else{
+      currentroot=currentroot?.left;
+     }
+    }
+    else{
+      if(currentroot?.right==null){
+        currentroot?.right=newnode;
+        return;
+      }
+      else{
+        currentroot=currentroot?.right;
+      }
+    }
   }
 }
 
- heapify(List<int> arr, int n, int i) {
-  int largest = i;
-  int left = 2 * i + 1;
-  int right = 2 * i + 2;
+// contains(root,data){
+//   Node? currentnode=root;
+//     if(data == currentnode?.data){
+//       return true;
+//     }
+//     else if(data < currentnode?.data){
+//       currentnode=currentnode?.left;
+//       contains(currentnode,data);
+//     }
+//     else{
+//       currentnode=currentnode?.right;
+//       contains(currentnode,data);
+//     }
+//   return false;
+// }
 
-  if (left < n && arr[left] > arr[largest]) {
-    largest = left;
+  contains(data){
+  Node? currentnode=root;
+  while(currentnode !=null){
+    if(data <currentnode.data){
+      currentnode=currentnode.left;
+    }
+    else if(data > currentnode.data){
+      currentnode=currentnode.right;
+    }
+    else{
+      return true;
+    }
   }
-
-  if (right < n && arr[right] > arr[largest]) {
-    largest = right;
-  }
-
-  if (largest != i) {
-    int swap = arr[i];
-    arr[i] = arr[largest];
-    arr[largest] = swap;
-
-    heapify(arr, n, largest);
-  }
+  return false;
 }
 
 main(){
-  List<int> arr=[3,1,5,4,2];
-  print(heapSort(arr));
+  insert(10);
+  insert(5);
+  insert(20);
+  insert(30);
+  print(contains(30));
 }
