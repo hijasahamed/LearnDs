@@ -1,111 +1,37 @@
 class Node{
   int? data;
-  Node? left;
-  Node? right;
+  Node? next;
   Node(this.data);
 }
-Node? root;
 
-insert(data){
-  Node newnode=Node(data);
-  Node? currentRoot=root;
-  if(root==null){
-    root=newnode;
-    return;
+Node? head;
+Node? tail;
+
+addNode(int data){
+  Node newNode = Node(data);
+  if(head == null){
+    head = newNode;
+  }else{
+    tail!.next = newNode;
   }
-  while(true){
-    if(data<currentRoot?.data){
-      if(currentRoot?.left==null){
-        currentRoot?.left=newnode;
-        return;
-      }
-      else{
-        currentRoot=currentRoot?.left;
-      }
-    }
-    else{
-      if(currentRoot?.right==null){
-        currentRoot?.right=newnode;
-        return;
-      }
-      else{
-        currentRoot=currentRoot?.right;
-      }
-    }
-  }
+  tail = newNode;
 }
 
-contains(data){
-  Node? currentroot=root;
-  while(currentroot!=null){
-    if(data<currentroot.data){
-      currentroot=currentroot.left;
-    }
-    else if(data>currentroot.data){
-      currentroot=currentroot.right;
-    }
-    else{
-      return true;
-    }
+displayNodes(){
+  if(head == null){
+    print('No Nodes');
   }
-  return false;
-}
-
-inorder(Node? node){
-  if(node!=null){
-    inorder(node.left);
-    print(node.data);
-    inorder(node.right);
-  }
-}
-
-preorder(Node? node){
-  if(node!=null){
-    print(node.data);
-    preorder(node.left);
-    preorder(node.right);
-  }
-}
-
-postorder(Node? node){
-  if(node!=null){
-    postorder(node.left);
-    postorder(node.right);
-    print(node.data);
-  }
-}
-
-delete(data,currentroot){
-  while(currentroot != null){
-    if(data < currentroot.data){
-      currentroot=currentroot.left;
-    }
-    else if(data > currentroot.data){
-      currentroot=currentroot.right;
-    }
-    else{
-      if(currentroot.left!=null && currentroot.right!=null){
-        currentroot.data=minvalue(currentroot.right);
-        delete(currentroot.data,currentroot.right);
-      }
-    }
-  }
-}
-
-minvalue(current){
-  if(current==null){
-    return current;
-  }
-  else{
-    return minvalue(current.left);
+  Node? temp = head;
+  while(temp!= null){
+    print(temp.data);
+    temp = temp.next;
   }
 }
 
 
-main(){
-  insert(10);
-  insert(5);
-  insert(2);
-  insert(15);
-  insert(30);
+void main(){
+  addNode(10);
+  addNode(20);
+  addNode(30);
+  displayNodes();
 }
