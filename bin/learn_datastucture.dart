@@ -1,37 +1,18 @@
-class Node{
-  int? data;
-  Node? next;
-  Node(this.data);
+class TrieNode{
+  Map<String,TrieNode> children = {};
+  bool isEndOfWord = false; 
 }
 
-Node? head;
-Node? tail;
+class Trie{
+  TrieNode root = TrieNode();
 
-addNode(int data){
-  Node newNode = Node(data);
-  if(head == null){
-    head = newNode;
-  }else{
-    tail!.next = newNode;
+  void insert(String word){
+    TrieNode current = root;
+    for(int i=0; i<word.length ; i++){
+      String char = word[i];
+      current.children.putIfAbsent(char, () => TrieNode(),);
+      current = current.children[char]!;
+    }
+    current.isEndOfWord = true;
   }
-  tail = newNode;
-}
-
-displayNodes(){
-  if(head == null){
-    print('No Nodes');
-  }
-  Node? temp = head;
-  while(temp!= null){
-    print(temp.data);
-    temp = temp.next;
-  }
-}
-
-
-void main(){
-  addNode(10);
-  addNode(20);
-  addNode(30);
-  displayNodes();
 }
